@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Calculator_Gui extends JFrame implements ActionListener, KeyListener{
-	//깃허브 연동 테스트1
+	//깃허브 연동 테스트12
 	private String[] grades = {"A+", "A0", "A-", "B+", "B0", "B-", "C+", "C0", "C-", "D+", "D0", "D-", "F"};
 	private JPanel subjectPanel;
 	JLabel userName = new JLabel("이름");
