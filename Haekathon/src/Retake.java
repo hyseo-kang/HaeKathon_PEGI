@@ -8,7 +8,7 @@ public class Retake {
     }
 
     public void checkAndAddRetake(Subject subject) {
-        if (RetakingSubjects(subject.getGrade())) {
+        if (RetakingSubjects(subject.getGrades())) {
             retakeSubjects.add(subject);
         }
     }
