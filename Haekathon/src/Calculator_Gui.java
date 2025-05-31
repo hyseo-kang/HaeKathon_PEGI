@@ -12,7 +12,7 @@ public class Calculator_Gui extends JFrame implements ActionListener, KeyListene
 	private JButton addSubject = new JButton("과목 추가");
 	private ArrayList<RowComponents> rowList = new ArrayList<>(); // 입력 행 리스트
 	// 클래스 멤버 변수로 졸업 학점 필드 추가
-	private ArrayList<Subject> subjectlist = new ArrayList<>();//과목 정보 배열 저장-oje
+	public ArrayList<Subject> subjectlist = new ArrayList<>();//과목 정보 배열 저장-oje
 	Retake retakeChecker = new Retake();
 	private JTextField graduationCreditField = new JTextField(20);
 	
@@ -118,7 +118,7 @@ public class Calculator_Gui extends JFrame implements ActionListener, KeyListene
 	            );
 
 	            for (RowComponents row : rowList) {
-	                String grade = row.getGrade();
+	                String grade = row.getGrade();//oje
 	                double credit = row.getCredit();
 	                String subject = row.getSubject();
 	                String semester= row.getSemester();
@@ -195,10 +195,13 @@ public class Calculator_Gui extends JFrame implements ActionListener, KeyListene
 	    resultPanel.add(retakeBtn);
 	    resultPanel.add(Box.createVerticalStrut(10));
 	    resultPanel.add(gradBtn);
-	    System.out.println("재수강 대상 과목 수: " + retakeCount);
-        retakeChecker.printRetakeSubjects();
 	    resultFrame.add(resultPanel);
 	    resultFrame.setVisible(true);
+	    retakeBtn.addActionListener(new ActionListener() {
+	          public void actionPerformed(ActionEvent e) {
+	             new RetakeGUI(retakeChecker.retakeSubjects);
+	          }
+	       });
 	}
 
 	
