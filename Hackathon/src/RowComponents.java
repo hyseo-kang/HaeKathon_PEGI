@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class RowComponents {
+	//깃허브 연동 테스트
     private JCheckBox major;
     private JTextField subjectText;
     private JComboBox<String> gradeCombo;

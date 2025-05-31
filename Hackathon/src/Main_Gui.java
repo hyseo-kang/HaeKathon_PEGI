@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Main_Gui extends JFrame implements ActionListener, KeyListener{
+	//깃허브 연동 테스트
 	Calculator_Gui calculator = null;
 	JLabel label_Name = new JLabel("학점 계산기");
 	JButton enter = new JButton("start!");
