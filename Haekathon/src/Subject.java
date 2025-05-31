@@ -26,7 +26,7 @@ public class Subject {
 
 
 	    public void printInfo() {
-	        System.out.println(subject + "," + semester + ","  + grade +"," + professor+"," +code+"," +type+ ","+credit);
+	        System.out.println(subject + "," + semester + ","  + grade +"," +type+ ","+credit);
 	    }
 
 }
