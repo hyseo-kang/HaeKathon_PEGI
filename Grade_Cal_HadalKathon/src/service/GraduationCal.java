@@ -1,9 +1,12 @@
+package service;
 import java.util.*;
+
+import domain.GradualStatus;
+import dto.*;
 
 public class GraduationCal {
 	
-	
-	public void setGraduationStatus(List<SubjectInfo> subjectList, int gradualCredit, GradualStatus status)
+	public void setGraduationStatus(List<Subject> subjectList, GradualCredit gradualCredit, GradualStatus status)
 	{
 		if (status == null) {
 	        throw new IllegalArgumentException("정보를 받을 status를 불러오지 못했습니다.");
@@ -11,8 +14,8 @@ public class GraduationCal {
 		status.setCurCredit(getTotalCredit(subjectList));
 		status.setSemPerCredit(getSemesterCredit(subjectList));
 		// status.setRetaken(countRetakenSubject(subjectList));
-	    status.setGCredit(gradualCredit);
-	    status.setRemainCredit(gradualCredit - status.getCurCredit());
+	    status.setGCredit(gradualCredit.getTotalCredit());
+	    status.setRemainCredit(gradualCredit.getTotalCredit() - status.getCurCredit());
 	    double rPercent = (double) status.getRemainCredit() / status.getGCredit();
 	    status.setRemainPercent(Math.round(rPercent * 100) / 100.0);
 	}
@@ -47,17 +50,17 @@ public class GraduationCal {
 	
 	
 	/* Map< 학기, 학기별 이수학점> 반환 */
-	public Map<String, Integer> getSemesterCredit(List<SubjectInfo> subjectList) {
-		Map<String, Integer> semCredit = new HashMap<String, Integer>();
+	public Map<String, Double> getSemesterCredit(List<Subject> subjectList) {
+		Map<String, Double> semCredit = new HashMap<String, Double>();
 		
-		for (SubjectInfo subject : subjectList) {
-			String sem = subject.getSemester();
-			int credit = subject.getCredit();
+		for (Subject subject : subjectList) {
+			String sem = subject.semester;
+			double credit = subject.credit;
 			
 			if ( !semCredit.containsKey(sem) )
 				semCredit.put(sem, credit);
 			else {
-				int curCredit = semCredit.get(sem);
+				double curCredit = semCredit.get(sem);
 				semCredit.put(sem, curCredit + credit);
 			}
 		}
@@ -65,11 +68,11 @@ public class GraduationCal {
 		return semCredit;
 	}
 	
-	public int getTotalCredit(List<SubjectInfo> subjectList) {
+	public int getTotalCredit(List<Subject> subjectList) {
 		int totalCredit = 0;
 		
-		for(SubjectInfo subject : subjectList)
-			totalCredit += subject.getCredit();
+		for(Subject subject : subjectList)
+			totalCredit += subject.credit;
 		
 		return totalCredit;
 	}
