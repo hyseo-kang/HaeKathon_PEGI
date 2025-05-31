@@ -10,7 +10,6 @@ import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
 
 public class Hack extends JWindow {
-	//깃허브 연동 테스트
 	public Hack() {
 		//JWindow의 크기
 		this.setSize(655, 370);
