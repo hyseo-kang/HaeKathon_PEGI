@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Retake {
-    private ArrayList<Subject> retakeSubjects;
+    public ArrayList<Subject> retakeSubjects;
 
     public Retake() {
         retakeSubjects = new ArrayList<>();
     }
 
     public void checkAndAddRetake(Subject subject) {
-        if (RetakingSubjects(subject.getGrade())) {
+        if (RetakingSubjects(subject.getGrades())) {
             retakeSubjects.add(subject);
         }
     }

@@ -52,8 +52,8 @@ public class RegisterScore {
             String type = sc.nextLine();
 
             System.out.print("과목 학점 : ");
-            String credit = sc.nextLine();
-            Subject sub=new Subject(subject, semester, grade, professor,code, type, credit);
+            double credit = sc.nextDouble();
+            Subject sub=new Subject(subject, semester, grade, true, credit);
             listsub.add(sub);
             retakeChecker.checkAndAddRetake(sub);
             
